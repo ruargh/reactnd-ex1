@@ -3,9 +3,14 @@ import React, { Component } from 'react'
 class MovieList extends Component {
   render() {
     return(
-      <ol>
-        <li>Jane Cruz''s favorite movie is Planet Earth 1.</li>
-      </ol>
+      <ul>
+        {this.props.profiles.map(profile => {
+          const userName = this.props.users[profile.userID].name
+          const favMovie = this.props.movies[profile.favoriteMovieID].name
+          return (
+        <li key={profile.id}>{userName}'s favorite movie is {favMovie}.</li>
+        )})}
+      </ul>
       )
   }
 }
